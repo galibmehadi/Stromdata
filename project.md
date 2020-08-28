@@ -1,12 +1,15 @@
-Synopsis
+#Synopsis
+
 Storms and other severe weather events have huge impact on public health and economic problems for municipalities and their inhabitants. Some of severe events can cause injuries property damage and even lead to death. This analysis present which types of events are most harmful with respect to population health and which have the greatest economic consequences.
 
-Data Processing
+#Data Processing
+
 I'm going to use The U.S. National Oceanic and Atmospheric Administration's (NOAA) storm database which tracks characteristics of major storms and weather events in the United States. This dataset comes from the Internet.
 
 Download file from the Internet:
 
 link <- "http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+
 download.file(url = link, destfile = "StormData")
 Read a file in table format
 
@@ -24,10 +27,14 @@ StormData$PROPDMGEXP2[which(StormData$PROPDMGEXP == "K")] <- 1000
 StormData$PROPDMGEXP2[which(StormData$PROPDMGEXP == "M" | StormData$PROPDMGEXP == "m")] <- 1000000
 StormData$PROPDMGEXP2[which(StormData$PROPDMGEXP == "B")] <- 1000000000
 table(StormData$PROPDMGEXP2)
+
 ## 
 ##      1   1000  1e+06  1e+09 
 ## 466255 424665  11337     40
-Which types of events are most harmful to population health?
+
+
+#Which types of events are most harmful to population health?
+
 Fatalities and injuries have the most impact on public health, so I will present what types of severe weather are the most dangerous.
 
 The first plot presents a Death toll by Event type
@@ -46,6 +53,7 @@ StormData %>%
       theme_light()
 
 
+
 The second plot presents Injuries by Event type
 
 StormData %>%
@@ -62,7 +70,8 @@ StormData %>%
       theme_light()
 
 
-Which types of events have the greatest economic consequences?
+#Which types of events have the greatest economic consequences?
+
 This plot shows Property damage estimates by Event type
 
 StormData %>%
